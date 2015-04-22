@@ -5,6 +5,7 @@
       <!--<dependency>profile-Products.CMFPlone:default</dependency>-->
       <dependency>profile-lmu.policy.base:default</dependency>
       <dependency>profile-lmu.theme.serviceportal:default</dependency>
+      <!--<dependency>profile-lmu.theme.intranet:default</dependency>-->
       <dependency>profile-lmu.contenttypes.polls:default</dependency>
   </dependencies>
 </metadata>
