@@ -12,16 +12,17 @@
     <genericsetup:registerProfile
         name="default"
         title="LMU Policy for ZUV-Serviceportal"
-        directory="profiles/default"
         description="Extension policy profile for ZUV-Serviceportal - installs all dependecies and Settings for the Serviceportal."
+        directory="profiles/default"
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
-    <genericsetup:importStep
+    <genericsetup:registerProfile
         name="demo-content"
         title="LMU Policy for ZUV-Serviceportal - Demo-Content"
         description="Extension profile for ZUV-Serviceportal - creates demo content on the portal"
-        handler="lmu.policy.serviceportal.setuphandlers.setupDemoContent"
+        directory="profiles/demo-content"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
 </configure>

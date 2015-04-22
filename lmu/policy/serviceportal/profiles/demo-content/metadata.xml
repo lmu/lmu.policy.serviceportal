@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<metadata>
+  <version>1000</version>
+  <dependencies>
+      <dependency>profile-lmu.policy.serviceportal:default</dependency>
+  </dependencies>
+</metadata>

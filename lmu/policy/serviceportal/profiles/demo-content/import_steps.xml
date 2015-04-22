@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="lmu.policy.serviceportal--demo-content" version="20150422-01"
+              handler="lmu.policy.serviceportal.setuphandlers.importDemoContent"
+              title="lmu.policy.serviceportal demo content">
+    lmu.policy.serviceportal demo-content installation step.
+ </import-step>
+</import-steps>
