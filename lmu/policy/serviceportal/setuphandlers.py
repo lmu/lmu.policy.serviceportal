@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
-
 from DateTime import DateTime
 
 from plone import api
