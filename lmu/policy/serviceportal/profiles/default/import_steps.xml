@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <import-steps>
- <import-step id="lmu.policy.servicpeortal--default" version="20150422-01"
-              handler="lmu.policy.servicpeortal.setuphandlers.setupVarious"
-              title="lmu.policy.servicpeortal default">
-    lmu.policy.servicpeortal default installation step.
+ <import-step id="lmu.policy.serviceportal--default" version="20150422-01"
+              handler="lmu.policy.serviceportal.setuphandlers.setupVarious"
+              title="lmu.policy.serviceportal default">
+    lmu.policy.serviceportal default installation step.
  </import-step>
 </import-steps>
