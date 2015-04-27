@@ -19,10 +19,10 @@ required_groups = {
 }
 
 base_content = {
-    'umfragen', {
+    'umfragen': {
         'title': 'Umfragen',
         'description': '',
         'type': 'Folder',
-        'path': '/'
+        'path': '/',
     }
 }
