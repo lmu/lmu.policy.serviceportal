@@ -8,18 +8,18 @@ from plone import api
 
 from zExceptions import BadRequest
 
-from lmu.policy.servcieportal.config import base_content
-from lmu.policy.servcieportal.config import required_groups
+from lmu.policy.serviceportal.config import base_content
+from lmu.policy.serviceportal.config import required_groups
 
-from lmu.policy.servcieportal.demo_content import demo_users
-from lmu.policy.servcieportal.demo_content import demo_polls
+from lmu.policy.serviceportal.demo_content import demo_users
+from lmu.policy.serviceportal.demo_content import demo_polls
 
 
 def setupVarious(context):
     """Install all additional Things that can't be done via Generic Setup
     """
 
-    if context.readDataFile('lmu.policy.servcieportal_default.txt') is None:
+    if context.readDataFile('lmu.policy.serviceportal_default.txt') is None:
         return
 
     _setupGroups(context)
@@ -73,7 +73,7 @@ def _setupBaseContent(context):
 def importDemoContent(context):
     """Install Demo Content on Portal"""
 
-    if context.readDataFile('lmu.policy.servcieportal_demo-content.txt') is None:
+    if context.readDataFile('lmu.policy.serviceportal_demo-content.txt') is None:
         return
 
     #return # seems to be called all the time.
