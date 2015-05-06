@@ -16,5 +16,7 @@ demo_users = {
 }
 
 demo_polls = {
-    '': {}
+    'wetter': {
+        'poll_type': '',
+    }
 }
