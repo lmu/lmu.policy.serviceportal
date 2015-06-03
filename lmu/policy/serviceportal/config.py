@@ -11,7 +11,7 @@ required_groups = {
         'title': 'Serviceportal Supportteam (Virtual Group)',
         'description': 'Virtual Group for the Serviceportal-Supportteam derifed from Shibboleth via "cn=in_sp_supportteam,ou=..."'
     },
-    'in_members': {
+    'sp_members': {
         'roles': ['Member'],
         'title': 'ZUV-Serviceportal Users (Virtual Group)',
         'description': 'Virtual Group for Users of the ZUV-Serviceportal derifed from Shibboleth via "cn=ZUV-Mitarbeiter,ou=..."'
@@ -22,7 +22,7 @@ base_content = {
     'umfragen': {
         'title': 'Umfragen',
         'description': '',
-        'type': 'Folder',
+        'type': 'Poll Folder',
         'path': '/',
     }
 }

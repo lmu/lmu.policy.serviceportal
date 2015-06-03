@@ -56,13 +56,15 @@ def _setupBaseContent(context):
                     container=container,
                     type=oval['type'],
                     title=oval['title'],
-                    description=oval['description']
+                    description=oval['description'],
+                    text=oval.get('text', None)
                 )
             else:
                 folder = container.get(oid)
                 folder.title = oval['title']
                 folder.description = oval['description']
-            api.content.transition(obj=folder, to_state='published')
+            if api.content.get_state(obj=folder) != 'published':
+                api.content.transition(obj=folder, to_state='published')
         except BadRequest as e:
             print(e.message)
         except Exception as e:
@@ -78,7 +80,7 @@ def importDemoContent(context):
     #return # seems to be called all the time.
     #portal = api.portal.get()
     _setupDemoUsers(context)
-    #_setupDemoPolls(context)
+    _setupDemoPolls(context)
 
 
 def _setupDemoUsers(context):
@@ -103,13 +105,14 @@ def _setupDemoPolls(context):
             container = api.content.get(path=oval['path'])
             entry = api.content.create(
                 id=oid,
-                type='Poll',
+                type=oval['type'],
                 container=container,
                 title=oval['title'],
                 description=oval['description'],
                 creators=(oval['author'],),
             )
-            api.content.transition(obj=entry, to_state='internally_published')
+            if api.content.get_state(obj=entry) != oval['state']:
+                api.content.transition(obj=entry, to_state=oval['state'])
             entry.modification_date = DateTime(oval['modification_date'])
         except BadRequest as e:
             print(e.message)
