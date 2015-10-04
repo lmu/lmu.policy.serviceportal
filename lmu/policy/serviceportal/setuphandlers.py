@@ -70,16 +70,6 @@ def _setupBaseContent(context):
         except Exception as e:
             print(e.message)
 
-    portal = api.portal.get()
-    if 'index_html' not in portal.keys():
-        index_html = api.content.create(
-            id='index_html',
-            title=u'Verweis auf die Fiona Startseite',
-            description=u'Der Verweis ist notwendig, da Plone auf / bindet aber Fiona die /index.html ausliefern soll, die die Startseite des Portals ist.',
-            url='${navigation_root}/index.html'
-        )
-        api.content.transition(obj=index_html, to_state='internally_published')
-
 
 def importDemoContent(context):
     """Install Demo Content on Portal"""
