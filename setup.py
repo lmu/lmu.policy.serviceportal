@@ -24,34 +24,12 @@ setup(name='lmu.policy.serviceportal',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'lmu.contenttypes.blog',
-          'lmu.contenttypes.pinnwand',
+          'lmu.policy.base',
           'lmu.theme.serviceportal',
-          'pas.plugins.shibboleth_headers',
-          'Pillow',
-          'Plone',
-          'plone.api',
-          'Products.LongRequestLogger',
           'setuptools',
           'z3c.jbot',
           # -*- Extra requirements: -*-
       ],
-      extras_require={
-          'test': [
-              'mock',
-              'plone.app.testing',
-              'plone.app.robotframework[debug]',
-              'fake-factory',
-          ],
-          'develop': [
-              'coverage',
-              'flake8',
-              'i18ndude',
-              'Sphinx',
-              'zptlint',
-          ],
-          'release': []
-      },
       entry_points="""
       # -*- Entry points: -*-
 
