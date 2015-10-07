@@ -27,7 +27,7 @@ def setupVarious(context):
         return
 
     _setupGroups(context)
-    _setupAutoRoleHeader(context)
+    #_setupAutoRoleHeader(context)
     _setupBaseContent(context)
 
 
