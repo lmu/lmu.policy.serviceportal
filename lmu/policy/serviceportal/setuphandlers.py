@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
-from DateTime import DateTime
 
 from plone import api
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
 
 from zExceptions import BadRequest
+from Products.AutoRoleFromHostHeader.plugins.AutoRole import AutoRole
+
+from lmu.policy.base.controlpanel import ILMUSettings
+from lmu.policy.base.controlpanel import TitleLanguagePair
 
 from lmu.policy.serviceportal.config import base_content
 from lmu.policy.serviceportal.config import required_groups
@@ -22,6 +27,7 @@ def setupVarious(context):
         return
 
     _setupGroups(context)
+    _setupAutoRoleHeader(context)
     _setupBaseContent(context)
 
 
@@ -44,6 +50,17 @@ def _setupGroups(context):
                 roles=gdata['roles'],
                 description=gdata['description']
             )
+
+
+def _setupAutoRoleHeader(context):
+    acl_users = api.portal.get_tool('acl_users')
+
+    #import ipdb; ipdb.set_trace()
+
+    arh = AutoRole('auto_role_header_members',
+                   title='AutoRole for ZUV-Servcieportal-Members',
+                   match_roles=('Groupmembership; ^(.*?(\bcn=ZUV-Serviceportal-Members,ou=Mitarbeiter,ou=LMU-Portal,ou=anwendungen,o=uni-muenchen,c=de\b)[^$]*)$; ZUV-Serviceportal-Members; python:True'))
+    acl_users['auto_role_header_members'] = arh
 
 
 def _setupBaseContent(context):
@@ -69,6 +86,16 @@ def _setupBaseContent(context):
             print(e.message)
         except Exception as e:
             print(e.message)
+
+
+def _setupBreadcrumbs(context):
+    registry = getUtility(IRegistry)
+    lmu_settings = registry.forInterface(ILMUSettings)
+    url = u'/index.html'
+    lmu_settings.breadcrumb_1_url = url
+    title_de = TitleLanguagePair(language='de', text=u'LMU ZUV-Serviceportal')
+    lmu_settings.breadcrumb_1_title = [title_de]
+    lmu_settings.domain = 'www.servcieportal.verwaltung.uni-muenchen.de'
 
 
 def importDemoContent(context):
@@ -113,7 +140,6 @@ def _setupDemoPolls(context):
             )
             if api.content.get_state(obj=entry) != oval['state']:
                 api.content.transition(obj=entry, to_state=oval['state'])
-            entry.modification_date = DateTime(oval['modification_date'])
         except BadRequest as e:
             print(e.message)
         except Exception as e:

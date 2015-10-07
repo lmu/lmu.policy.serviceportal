@@ -26,9 +26,9 @@ demo_polls = {
     'wie-gut-hilft-ihnen-unser-service-portal-bei-der-arbeit': {
         'poll_type': 'Star Poll',
         'title': 'Wie gut hilft Ihnen unser Service-Portal bei der Arbeit?',
+        'path': '/umfragen',
         'description': 'Seien Sie ehrlich, nur so können wir besser werden.',
         'author': 'K5B4187806EA6E3B0',  # Katharine Linges
-        'modification_date': '2014/10/02 12:43:00.000000 GMT+2',
         'state': 'open',
     }
 }
