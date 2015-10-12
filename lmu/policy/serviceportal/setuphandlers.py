@@ -28,6 +28,7 @@ def setupVarious(context):
 
     _setupGroups(context)
     #_setupAutoRoleHeader(context)
+    _setupDeletePloneBaseContent(context)
     _setupBaseContent(context)
 
 
@@ -61,6 +62,15 @@ def _setupAutoRoleHeader(context):
                    title='AutoRole for ZUV-Servcieportal-Members',
                    match_roles=('Groupmembership; ^(.*?(\bcn=ZUV-Serviceportal-Members,ou=Mitarbeiter,ou=LMU-Portal,ou=anwendungen,o=uni-muenchen,c=de\b)[^$]*)$; ZUV-Serviceportal-Members; python:True'))
     acl_users['auto_role_header_members'] = arh
+
+
+def _setupDeletePloneBaseContent(context):
+    portal = api.portal.get()
+    for item in portal.values():
+        if item.id in ['front-page', 'news', 'events', 'Members']:
+            api.content.delete(obj=item)
+    wf_tool = api.portal.get_tool('portal_workflow')
+    wf_tool.updateRoleMappings()
 
 
 def _setupBaseContent(context):
