@@ -82,6 +82,8 @@ def _setupBaseContent(context):
                 folder.description = oval['description']
             if api.content.get_state(obj=folder) != 'published':
                 api.content.transition(obj=folder, to_state='published')
+            for group, roles in oval['roles']:
+                api.group.grant_roles(groupname=group, roles=roles, obj=folder)
         except BadRequest as e:
             print(e.message)
         except Exception as e:
